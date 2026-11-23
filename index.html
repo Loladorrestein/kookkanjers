@@ -1,1 +1,471 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kookkanjers — Samen makkelijk &amp; veilig koken</title>
 
+  <!-- Moderne, vriendelijke typografie -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Basisinstellingen: 1 vaste dia, gegarandeerd niet scrollen */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #FFFBEB;
+      /* Subtiel, fris stippelpatroon in warme zon- en luchttinten */
+      background-image:
+        radial-gradient(#FDE68A 2px, transparent 2px),
+        radial-gradient(#BAE6FD 2px, transparent 2px);
+      background-size: 44px 44px;
+      background-position: 0 0, 22px 22px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hoofddia met strakke, moderne afwerking */
+    .slide-frame {
+      width: min(1200px, 93vw);
+      height: min(660px, 89vh);
+      background: #FFFFFF;
+      border: 2.5px solid #1E293B;
+      border-radius: 32px;
+      box-shadow: 0 24px 48px -16px rgba(30, 41, 59, 0.14), 8px 8px 0px #FDE68A;
+      padding: clamp(24px, 4vh, 44px) clamp(28px, 4vw, 52px);
+      display: flex;
+      align-items: center;
+      gap: clamp(28px, 4.5vw, 56px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Linker illustratiekaart met frisse lucht- en zonlicht-tinten */
+    .illustration-card {
+      flex: 1.05 1 0;
+      height: 100%;
+      background: linear-gradient(180deg, #E0F2FE 0%, #F0F9FF 56%, #FEF3C7 100%);
+      border: 2.5px solid #1E293B;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .illustration-card svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Rechter tekst- en huisstijlkolom */
+    .content-column {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    /* Stijlvolle merkbadge */
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      align-self: flex-start;
+      background: #FEF3C7;
+      border: 2px solid #1E293B;
+      border-radius: 999px;
+      padding: 6px 18px 6px 8px;
+      margin-bottom: clamp(18px, 3vh, 28px);
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #3B82F6;
+      border: 2px solid #1E293B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-name {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(18px, 1.8vw, 21px);
+      font-weight: 600;
+      color: #1E293B;
+      letter-spacing: 0.01em;
+    }
+
+    /* Krachtige, heldere hoofdtitel */
+    .hero-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(34px, 4.1vw, 52px);
+      font-weight: 700;
+      line-height: 1.12;
+      color: #1E293B;
+      margin-bottom: clamp(14px, 2.5vh, 22px);
+    }
+
+    .highlight-word {
+      position: relative;
+      display: inline-block;
+      color: #EA580C;
+      z-index: 1;
+    }
+
+    .highlight-word::after {
+      content: "";
+      position: absolute;
+      left: -2px;
+      right: -2px;
+      bottom: 4px;
+      height: 12px;
+      background: #FDE047;
+      border-radius: 6px;
+      z-index: -1;
+    }
+
+    /* Ondertitel */
+    .hero-subtitle {
+      font-size: clamp(15px, 1.55vw, 18.5px);
+      font-weight: 500;
+      line-height: 1.6;
+      color: #475569;
+      max-width: 450px;
+      margin-bottom: clamp(22px, 3.8vh, 34px);
+    }
+
+    /* Strakke huisstijl-kenmerken */
+    .mood-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .mood-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      border: 2px solid #1E293B;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #1E293B;
+      background: #FFFFFF;
+    }
+
+    .tag-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1.5px solid #1E293B;
+    }
+
+    .dot-green  { background: #22C55E; }
+    .dot-blue   { background: #3B82F6; }
+    .dot-orange { background: #F97316; }
+
+    /* Subtiele stoomanimatie boven de pan */
+    @keyframes steamRise {
+      0%, 100% { transform: translateY(0px); opacity: 0.55; }
+      50% { transform: translateY(-7px); opacity: 0.9; }
+    }
+
+    .anim-steam {
+      animation: steamRise 3.4s ease-in-out infinite;
+    }
+
+    /* Zacht pruttelende beweging van de blauwe pan */
+    @keyframes panSimmer {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-2px) rotate(-0.6deg); }
+      75% { transform: translateY(-2px) rotate(0.6deg); }
+    }
+
+    .anim-pan {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: panSimmer 3.2s ease-in-out infinite;
+    }
+
+    /* Rustig roerende houten pollepel */
+    @keyframes spoonStir {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    .anim-spoon {
+      transform-box: fill-box;
+      transform-origin: 50% 72%;
+      animation: spoonStir 2.8s ease-in-out infinite;
+    }
+
+    /* Opstijgende kookbubbeltjes boven de pan */
+    @keyframes bubbleFloat {
+      0% { transform: translateY(0px) scale(0.75); opacity: 0; }
+      35% { opacity: 0.95; }
+      100% { transform: translateY(-34px) scale(1.1); opacity: 0; }
+    }
+
+    .anim-bubble-1 {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: bubbleFloat 2.6s ease-out infinite;
+    }
+
+    .anim-bubble-2 {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: bubbleFloat 3.1s ease-out 0.9s infinite;
+    }
+
+    .anim-bubble-3 {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: bubbleFloat 2.8s ease-out 1.7s infinite;
+    }
+
+    /* Subtiel wiebelende hanglamp en kruidenplantje */
+    @keyframes lampSway {
+      0%, 100% { transform: rotate(-1.5deg); }
+      50% { transform: rotate(1.5deg); }
+    }
+
+    .anim-lamp {
+      transform-box: fill-box;
+      transform-origin: 50% 0%;
+      animation: lampSway 4.8s ease-in-out infinite;
+    }
+
+    @keyframes plantSway {
+      0%, 100% { transform: rotate(-2.5deg); }
+      50% { transform: rotate(2.5deg); }
+    }
+
+    .anim-plant {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: plantSway 3.6s ease-in-out infinite;
+    }
+
+    /* Lichte wiebel op de verse groenten */
+    @keyframes veggieRock {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+
+    .anim-veggie-1 {
+      transform-box: fill-box;
+      transform-origin: 50% 90%;
+      animation: veggieRock 3.4s ease-in-out infinite;
+    }
+
+    .anim-veggie-2 {
+      transform-box: fill-box;
+      transform-origin: 50% 80%;
+      animation: veggieRock 3.8s ease-in-out 0.8s infinite;
+    }
+
+    /* Responsieve schaling voor kleinere schermen zonder scrollen */
+    @media (max-width: 820px) {
+      .slide-frame {
+        flex-direction: column;
+        height: 92vh;
+        padding: 20px;
+        gap: 18px;
+      }
+      .illustration-card {
+        width: 100%;
+        flex: 1 1 52%;
+      }
+      .content-column {
+        flex: 1 1 48%;
+        align-items: center;
+        text-align: center;
+      }
+      .brand-pill {
+        align-self: center;
+        margin-bottom: 10px;
+      }
+      .mood-badges {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Enkele niet-scrollende dia met frisse, moderne illustratiestijl -->
+  <main class="slide-frame" aria-label="Kookkanjers sfeerimpressie">
+
+    <!-- Linkerzijde: Kleurrijke keukenillustratie met strakke blauwe pan zonder gezicht -->
+    <div class="illustration-card">
+      <svg viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Moderne kleurrijke illustratie van een blauwe kookpan met verse groenten en keukengerei">
+
+        <!-- Heldere boog op de achtergrond voor diepte -->
+        <path d="M85 415 V215 C85 110 170 48 280 48 C390 48 475 110 475 215 V415 Z" fill="#FFFFFF" opacity="0.88"/>
+
+        <!-- Frisse lichtblauwe keukentegellijnen -->
+        <line x1="115" y1="185" x2="445" y2="185" stroke="#BAE6FD" stroke-width="2"/>
+        <line x1="95" y1="245" x2="465" y2="245" stroke="#BAE6FD" stroke-width="2"/>
+        <line x1="95" y1="305" x2="465" y2="305" stroke="#BAE6FD" stroke-width="2"/>
+        <line x1="210" y1="125" x2="210" y2="365" stroke="#BAE6FD" stroke-width="2"/>
+        <line x1="350" y1="125" x2="350" y2="365" stroke="#BAE6FD" stroke-width="2"/>
+
+        <!-- Zonnige gele hanglamp bovenaan -->
+        <g class="anim-lamp">
+          <line x1="280" y1="0" x2="280" y2="54" stroke="#1E293B" stroke-width="3"/>
+          <path d="M236 86 C236 62 256 50 280 50 C304 50 324 62 324 86 Z" fill="#FACC15" stroke="#1E293B" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M266 86 A14 10 0 0 0 294 86" fill="#FEF08A" stroke="#1E293B" stroke-width="2.5"/>
+        </g>
+
+        <!-- Warme houten keukenplank links met kruidenpotje en plantje -->
+        <rect x="46" y="168" width="132" height="11" rx="5.5" fill="#D97706" stroke="#1E293B" stroke-width="2.5"/>
+        <!-- Voorraadpotje -->
+        <rect x="64" y="130" width="32" height="38" rx="6" fill="#FFFFFF" stroke="#1E293B" stroke-width="2.5"/>
+        <rect x="68" y="122" width="24" height="8" rx="3" fill="#F59E0B" stroke="#1E293B" stroke-width="2.5"/>
+        <rect x="71" y="142" width="18" height="12" rx="2" fill="#BAE6FD"/>
+        <!-- Frisgroen kruidenplantje -->
+        <path d="M114 142 H152 L147 168 H119 Z" fill="#F97316" stroke="#1E293B" stroke-width="2.5" stroke-linejoin="round"/>
+        <g class="anim-plant">
+          <path d="M133 142 C133 126 116 122 114 132 C122 136 128 138 133 142 Z" fill="#22C55E" stroke="#1E293B" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M133 142 C133 122 150 118 153 128 C145 133 139 136 133 142 Z" fill="#16A34A" stroke="#1E293B" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M133 140 C130 120 136 110 133 106" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+
+        <!-- Kleurrijke kommetjes rechts op een plankje -->
+        <rect x="386" y="168" width="126" height="11" rx="5.5" fill="#D97706" stroke="#1E293B" stroke-width="2.5"/>
+        <path d="M404 146 H462 C462 160 450 168 433 168 C416 168 404 160 404 146 Z" fill="#38BDF8" stroke="#1E293B" stroke-width="2.5"/>
+        <path d="M412 132 H454 C454 141 445 146 433 146 C421 146 412 141 412 132 Z" fill="#FACC15" stroke="#1E293B" stroke-width="2.5"/>
+
+        <!-- Zachte stoomslierten en opstijgende bubbeltjes boven de blauwe pan -->
+        <g class="anim-steam">
+          <path d="M246 196 C238 180 256 166 246 150" stroke="#93C5FD" stroke-width="5" stroke-linecap="round"/>
+          <path d="M280 188 C272 170 290 154 280 136" stroke="#60A5FA" stroke-width="5" stroke-linecap="round"/>
+          <path d="M314 196 C306 180 324 166 314 150" stroke="#93C5FD" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <circle class="anim-bubble-1" cx="230" cy="206" r="5" fill="#BAE6FD" stroke="#1E293B" stroke-width="2"/>
+        <circle class="anim-bubble-2" cx="296" cy="204" r="6" fill="#FEF08A" stroke="#1E293B" stroke-width="2"/>
+        <circle class="anim-bubble-3" cx="264" cy="208" r="4.5" fill="#93C5FD" stroke="#1E293B" stroke-width="2"/>
+
+        <!-- Houten pollepel die met de schep omlaag in de pan roert -->
+        <g transform="rotate(22 305 225)">
+          <g class="anim-spoon">
+            <rect x="298" y="132" width="14" height="115" rx="7" fill="#F59E0B" stroke="#1E293B" stroke-width="3"/>
+            <ellipse cx="305" cy="245" rx="22" ry="29" fill="#FBBF24" stroke="#1E293B" stroke-width="3"/>
+          </g>
+        </g>
+
+        <!-- Warm aanrechtblad onderaan -->
+        <rect x="0" y="396" width="560" height="164" fill="#FDE68A" stroke="#1E293B" stroke-width="2.5"/>
+        <line x1="0" y1="412" x2="560" y2="412" stroke="#FCD34D" stroke-width="4"/>
+
+        <!-- Hoofdobject: Gezichtloze helderblauwe braadpan -->
+        <g class="anim-pan">
+          <!-- Gele handvatten -->
+          <path d="M188 258 H168 C161 258 158 263 158 268 C158 273 161 278 168 278 H188" fill="none" stroke="#1E293B" stroke-width="7" stroke-linecap="round"/>
+          <path d="M188 258 H168 C161 258 158 263 158 268 C158 273 161 278 168 278 H188" fill="none" stroke="#FACC15" stroke-width="3.5" stroke-linecap="round"/>
+
+          <path d="M372 258 H392 C399 258 402 263 402 268 C402 273 399 278 392 278 H372" fill="none" stroke="#1E293B" stroke-width="7" stroke-linecap="round"/>
+          <path d="M372 258 H392 C399 258 402 263 402 268 C402 273 399 278 392 278 H372" fill="none" stroke="#FACC15" stroke-width="3.5" stroke-linecap="round"/>
+
+          <!-- Helderblauw panlichaam (zonder gezicht) -->
+          <path d="M186 234 H374 V342 C374 370 352 392 324 392 H236 C208 392 186 370 186 342 V234 Z" fill="#3B82F6" stroke="#1E293B" stroke-width="3.5" stroke-linejoin="round"/>
+          <!-- Diepteschaduw rechts op de blauwe pan -->
+          <path d="M336 236 H372 V342 C372 368 351 390 324 390 H306 C326 385 336 366 336 342 V236 Z" fill="#2563EB"/>
+          <!-- Frisse glansstreep links op de pan -->
+          <path d="M204 256 V324" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="204" cy="340" r="3.5" fill="#93C5FD"/>
+          <!-- Donkerblauwe panrand -->
+          <rect x="179" y="220" width="202" height="18" rx="9" fill="#1D4ED8" stroke="#1E293B" stroke-width="3.5"/>
+        </g>
+
+        <!-- Warme houten snijplank op de voorgrond -->
+        <rect x="74" y="422" width="412" height="24" rx="10" fill="#D97706" stroke="#1E293B" stroke-width="3"/>
+        <rect x="86" y="426" width="388" height="7" rx="3.5" fill="#F59E0B"/>
+
+        <!-- Verse, kleurrijke groenten op de snijplank -->
+        <!-- Helderrode tomaat links -->
+        <g transform="translate(148, 394)">
+          <g class="anim-veggie-1">
+            <ellipse cx="0" cy="2" rx="32" ry="28" fill="#EF4444" stroke="#1E293B" stroke-width="3"/>
+            <path d="M-14 -10 C-16 -2 -12 8 -6 12" stroke="#FCA5A5" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M-12 -24 L0 -17 L12 -24 L6 -29 L0 -35 L-6 -29 Z" fill="#22C55E" stroke="#1E293B" stroke-width="2.5" stroke-linejoin="round"/>
+          </g>
+        </g>
+
+        <!-- Frisgroene broccoli midden-voor -->
+        <g transform="translate(278, 398)">
+          <rect x="-11" y="2" width="22" height="22" rx="6" fill="#86EFAC" stroke="#1E293B" stroke-width="3"/>
+          <circle cx="-18" cy="-8" r="16" fill="#16A34A" stroke="#1E293B" stroke-width="3"/>
+          <circle cx="18" cy="-8" r="16" fill="#16A34A" stroke="#1E293B" stroke-width="3"/>
+          <circle cx="0" cy="-17" r="19" fill="#22C55E" stroke="#1E293B" stroke-width="3"/>
+        </g>
+
+        <!-- Oranje wortel rechts -->
+        <g transform="translate(405, 405) rotate(72)">
+          <g class="anim-veggie-2">
+            <path d="M-7 -42 C-14 -58 -2 -60 0 -44 C2 -60 14 -58 7 -42" fill="#22C55E" stroke="#1E293B" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M-16 -40 C-16 -47 16 -47 16 -40 L4 34 C3 40 -3 40 -4 34 Z" fill="#F97316" stroke="#1E293B" stroke-width="3" stroke-linejoin="round"/>
+            <line x1="-6" y1="-22" x2="3" y2="-22" stroke="#1E293B" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="-2" y1="-4" x2="7" y2="-4" stroke="#1E293B" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+        </g>
+
+      </svg>
+    </div>
+
+    <!-- Rechterzijde: Merkidentiteit, titel en sfeer -->
+    <div class="content-column">
+
+      <!-- Merkbadge -->
+      <div class="brand-pill">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 19h12"/>
+            <path d="M7 15h10l1-5a3.8 3.8 0 0 0-2.5-4.7 4.8 4.8 0 0 0-7 0A3.8 3.8 0 0 0 6 10l1 5z"/>
+          </svg>
+        </div>
+        <span class="brand-name" contenteditable="true">kookkanjers</span>
+      </div>
+
+      <!-- Hoofdtitel -->
+      <h1 class="hero-title" contenteditable="true">
+        Samen <span class="highlight-word">makkelijk</span> &amp; veilig koken
+      </h1>
+
+      <!-- Ondertitel -->
+      <p class="hero-subtitle" contenteditable="true">
+        Duidelijke recepten en een slimme taakverdeling voor ouder en kind. Ontspannen, leerzaam en vooral heel lekker.
+      </p>
+
+      <!-- Frisse kernwaarden-labels -->
+      <div class="mood-badges" aria-hidden="true">
+        <span class="mood-tag"><span class="tag-dot dot-green"></span>Stap voor stap</span>
+        <span class="mood-tag"><span class="tag-dot dot-blue"></span>Veilig samen</span>
+        <span class="mood-tag"><span class="tag-dot dot-orange"></span>Voor elk niveau</span>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
