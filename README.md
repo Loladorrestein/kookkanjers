@@ -1,8 +1,7 @@
 # [Kookkanjers]
 
 ## Klantwens
-[Wie is de klant en wat wil die kunnen doen?]
-
+Ouders met kinderen tussen de 7 en 10 jaar die hun kinderen veilig willen laten leren koken.
 ## Hoofdissues
 - [D) Klantvraag en ontwerp](https://github.com/TEAM/REPO/issues/NUMMER-D)
 - [E) Bouw en eerste tests](https://github.com/TEAM/REPO/issues/NUMMER-E)
@@ -10,8 +9,8 @@
 - [M) Uitleg en samenwerking](https://github.com/TEAM/REPO/issues/NUMMER-M)
 
 ## Zo gebruik je het
-1. [Waar begin je?]
-2. [Wat doe je en wat zie je daarna?]
+1. [Je komt op de landingspagina nadat je marketing hebt ontvangen/gezien.]
+2. [Dan bekijk je de mogelijke recepten en neemt de beslissing of je onze klant wilt worden]
 
 ## Code en demo
 - [Broncode](https://github.com/TEAM/REPO)
